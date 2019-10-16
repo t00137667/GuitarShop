@@ -1,0 +1,50 @@
+@startuml
+
+skinparam classAttributeIconSize 0
+
+class Guitar {
+-serialNumber: string
+-price: double
+
+}
+
+class GuitarSpec{
+-builder: Builder
+-model: String
+-type: Type
+-topWood: Wood
+-backWood: Wood
++getSpec() : GuitarSpec
+}
+
+class Inventory {
+-list : List
++search(GuitarSpec): List
++addGuitar(Guitar): void
+}
+
+enum Builder {
+Fender
+Martin
+Gibson
+Collins
+toString()
+}
+
+enum Type {
+Acoustic
+Electric
+toString()
+}
+
+enum Wood {
+Alderwood
+Cedar
+Mahogoney
+Pine
+}
+
+Guitar --o Inventory
+Guitar --o GuitarSpec
+
+@enduml

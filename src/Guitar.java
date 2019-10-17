@@ -5,9 +5,9 @@ public class Guitar {
 
 
 
-    public Guitar(String serialNumber, double price, Builder builder, String model,
+    public Guitar(String serialNumber, double price, Builder builder, String model, Strings numStrings,
                   Type type, Wood backWood, Wood topWood) {
-        GuitarSpec newSpec = new GuitarSpec(builder, model,type,backWood,topWood);
+        GuitarSpec newSpec = new GuitarSpec(builder, model, numStrings, type,backWood,topWood);
         this.serialNumber = serialNumber;
         this.price = price;
         specification = newSpec;

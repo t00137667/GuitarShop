@@ -9,20 +9,21 @@ public class FindGuitarTester {
         initialiseInventory(inventory);
 
         //what customer is looking for
-        GuitarSpec whatLookingFor = new GuitarSpec(Builder.FENDER, "Stratocastor", Type.ACOUSTIC, Wood.ALDERWOOD, Wood.ALDERWOOD);
+        GuitarSpec whatLookingFor = new GuitarSpec(Builder.FENDER, "Stratocastor",Strings.SIX , Type.ACOUSTIC, Wood.ALDERWOOD, Wood.ALDERWOOD);
 
         List guitars = inventory.search(whatLookingFor);
 
         if (!guitars.isEmpty()){
             for(Iterator i = guitars.iterator(); i.hasNext();){
                 Guitar guitar = (Guitar) i.next();
-                System.out.println(guitar.getSerialNumber() + " \n"
-                        + guitar.getSpec().getBuilder() + " \n"
-                        + guitar.getSpec().getModel() + " \n"
-                        + guitar.getPrice() + " \n"
-                        + guitar.getSpec().getType() + " \n"
-                        + guitar.getSpec().getTopwood() + " \n"
-                        + guitar.getSpec().getBackwood());
+                System.out.println("Serial Number: " + guitar.getSerialNumber() + " \n"
+                        + "Builder: " + guitar.getSpec().getBuilder() + " \n"
+                        + "Model: "+ guitar.getSpec().getModel() + " \n"
+                        + "Strings: "+ guitar.getSpec().getNumStrings() + "\n"
+                        + "Price €: "+ guitar.getPrice() + " \n"
+                        + "Type: "+ guitar.getSpec().getType() + " \n"
+                        + "Top Wood: "+ guitar.getSpec().getTopwood() + " \n"
+                        + "Back Wood: "+ guitar.getSpec().getBackwood());
             }
 
             //System.out.println("You might like this: " + guitar.getSerialNumber() + " " +
@@ -39,6 +40,7 @@ public class FindGuitarTester {
                 1499.99,
                 Builder.FENDER ,
                 "Stratocastor",
+                Strings.TWELVE,
                 Type.ELECTRIC,
                 Wood.ALDERWOOD,
                 Wood.ALDERWOOD);
@@ -47,6 +49,25 @@ public class FindGuitarTester {
                 1699.99,
                 Builder.FENDER,
                 "Stratocastor",
+                Strings.SIX,
+                Type.ACOUSTIC,
+                Wood.ALDERWOOD,
+                Wood.ALDERWOOD);
+
+        inventory.addGuitar("V00003",
+                1699.99,
+                Builder.GIBSON,
+                "Les Paul",
+                Strings.SIX,
+                Type.ELECTRIC,
+                Wood.CEDAR,
+                Wood.MAHOGANY);
+
+        inventory.addGuitar("V00005",
+                1699.99,
+                Builder.FENDER,
+                "Stratocastor",
+                Strings.SIX,
                 Type.ACOUSTIC,
                 Wood.ALDERWOOD,
                 Wood.ALDERWOOD);

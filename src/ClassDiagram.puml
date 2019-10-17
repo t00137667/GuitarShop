@@ -1,6 +1,7 @@
 @startuml
 
 skinparam classAttributeIconSize 0
+Builder -[hidden]>Type
 
 class Guitar {
 -serialNumber: string
@@ -15,6 +16,7 @@ class GuitarSpec{
 -topWood: Wood
 -backWood: Wood
 +getSpec() : GuitarSpec
++getNumStrings(): String
 }
 
 class Inventory {
@@ -29,6 +31,11 @@ Martin
 Gibson
 Collins
 toString()
+}
+
+enum Strings{
+SIX
+TWELVE
 }
 
 enum Type {

@@ -1,4 +1,4 @@
-public class Guitar {
+public class Guitar extends Instrument {
     private String serialNumber;
     private double price;
     public GuitarSpec specification;

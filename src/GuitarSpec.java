@@ -1,19 +1,10 @@
-public class GuitarSpec {
+public class GuitarSpec extends InstrumentSpec{
 
-    private Builder builder;
-    private String model;
     private Strings numStrings;
-    private Type type;
-    private Wood backWood;
-    private Wood topWood;
 
-    public GuitarSpec(Builder builder, String model, Strings numStrings, Type type, Wood backWood, Wood topWood) {
-        this.builder = builder;
-        this.model = model;
+    public GuitarSpec(Builder builder, String model, Type type, Wood backWood, Wood topWood, Strings numStrings) {
+        super(builder, model, type, backWood, topWood);
         this.numStrings = numStrings;
-        this.type = type;
-        this.backWood = backWood;
-        this.topWood = topWood;
     }
 
     public boolean matches(GuitarSpec spec) {
@@ -39,13 +30,6 @@ public class GuitarSpec {
         return true;
     }
 
-
-    public Builder getBuilder(){
-        return builder;
-    }
-    public String getModel(){
-        return model;
-    }
     public Strings getNumStrings(){ return numStrings; }
     public Type getType(){
         return type;

@@ -4,25 +4,48 @@ skinparam classAttributeIconSize 0
 Builder -[hidden]>Type
 
 class Guitar {
--serialNumber: string
--price: double
-
+-GuitarSpec : guitarSpec
++getSpec(): GuitarSpec
 }
 
-class GuitarSpec{
+abstract class Instrument {
+-serialNumber: string
+-price: double
+}
+
+abstract class InstrumentSpec{
 -builder: Builder
 -model: String
 -type: Type
 -topWood: Wood
 -backWood: Wood
++getBuilder(): Builder
++getModel(): String
++getType(): Type
++getTopWood(): Wood
++getBackWood(): Wood
++matches(InstrumentSpec): boolean
+}
+
+
+class GuitarSpec {
+-numStrings : Strings
 +getSpec() : GuitarSpec
 +getNumStrings(): String
 }
 
+class MandolinSpec {
+-style: Style
++getSpec(): MandolinSpec
++getStyle()
+}
+
 class Inventory {
 -list : List
-+search(GuitarSpec): List
-+addGuitar(Guitar): void
+get(String): Instrument
++search(GuitarSpec): Guitar [*]
++search(MandolinSpec): Mandolin [*]
++addInstrument(String, double, InstrumentSpec): void
 }
 
 enum Builder {
@@ -30,18 +53,26 @@ Fender
 Martin
 Gibson
 Collins
-toString()
++toString(): String
 }
+
+enum Style{
+A
+F
++toString(): String
+}
+
 
 enum Strings{
 SIX
 TWELVE
++toString(): String
 }
 
 enum Type {
 Acoustic
 Electric
-toString()
++toString(): String
 }
 
 enum Wood {
@@ -49,9 +80,21 @@ Alderwood
 Cedar
 Mahogoney
 Pine
++toString(): String
 }
 
-Guitar --o Inventory
-Guitar --o GuitarSpec
+
+Inventory --> Instrument
+Instrument o- InstrumentSpec
+Instrument <|-- Mandolin
+Instrument <|-- Guitar
+InstrumentSpec <|-- MandolinSpec
+InstrumentSpec <|-- GuitarSpec
+InstrumentSpec -> Builder
+Type <-- InstrumentSpec
+Wood <-- InstrumentSpec
+MandolinSpec --> Style
+GuitarSpec --> Strings
+
 
 @enduml
